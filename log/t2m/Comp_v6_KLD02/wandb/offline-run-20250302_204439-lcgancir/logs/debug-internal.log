@@ -1,0 +1,11 @@
+{"time":"2025-03-02T20:44:39.9985089+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"log\\t2m\\Comp_v6_KLD02\\wandb\\offline-run-20250302_204439-lcgancir\\logs\\debug-core.log"}
+{"time":"2025-03-02T20:44:40.283414+03:00","level":"INFO","msg":"created new stream","id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.2839277+03:00","level":"INFO","msg":"stream: started","id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.2839277+03:00","level":"INFO","msg":"handler: started","stream_id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.2839277+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.2839277+03:00","level":"INFO","msg":"sender: started","stream_id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.3098676+03:00","level":"INFO","msg":"stream: closing","id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.3098676+03:00","level":"INFO","msg":"handler: closed","stream_id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.3098676+03:00","level":"INFO","msg":"sender: closed","stream_id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.3098676+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lcgancir"}
+{"time":"2025-03-02T20:44:40.3103851+03:00","level":"INFO","msg":"stream: closed","id":"lcgancir"}

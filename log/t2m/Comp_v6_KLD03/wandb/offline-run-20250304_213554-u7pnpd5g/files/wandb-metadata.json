@@ -1,0 +1,51 @@
+{
+  "os":  "Windows-10-10.0.19045-SP0",
+  "python":  "CPython 3.11.9",
+  "startedAt":  "2025-03-04T18:35:55.770552Z",
+  "args":  [
+    "--name",
+    "Comp_v6_KLD03",
+    "--gpu_id",
+    "0",
+    "--lambda_kld",
+    "0.01",
+    "--dataset_name",
+    "t2m"
+  ],
+  "program":  "D:\\Programms\\Programming\\PythonProjects\\text-to-motion\\train_comp_v6.py",
+  "codePath":  "train_comp_v6.py",
+  "git":  {
+    "remote":  "https://github.com/EricGuo5513/text-to-motion",
+    "commit":  "72df96ec453edea2fbe9603b1d58a955eaf71636"
+  },
+  "root":  "./log\\t2m\\Comp_v6_KLD03",
+  "host":  "DESKTOP-QKV41TM",
+  "executable":  "D:\\Programms\\Programming\\PythonProjects\\text-to-motion\\.venv\\Scripts\\python.exe",
+  "codePathLocal":  "train_comp_v6.py",
+  "cpu_count":  6,
+  "cpu_count_logical":  12,
+  "gpu":  "NVIDIA GeForce GTX 1080",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "2000396742656",
+      "used":  "1098715725824"
+    }
+  },
+  "memory":  {
+    "total":  "17115820032"
+  },
+  "cpu":  {
+    "count":  6,
+    "countLogical":  12
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce GTX 1080",
+      "memoryTotal":  "8589934592",
+      "cudaCores":  2560,
+      "architecture":  "Pascal"
+    }
+  ],
+  "cudaVersion":  "12.8"
+}

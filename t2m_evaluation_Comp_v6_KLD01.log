@@ -1,0 +1,89 @@
+==================== Replication 0 ====================
+Time: 2025-03-05 22:27:30.787548
+---> [ground truth] MM Dist: 2.3327
+---> [ground truth] R_precision: (top 1): 0.5758 (top 2): 0.7859 (top 3): 0.8832 
+---> [Comp_v6_KLD01] MM Dist: 3.0548
+---> [Comp_v6_KLD01] R_precision: (top 1): 0.4691 (top 2): 0.6719 (top 3): 0.7758 
+Time: 2025-03-05 22:28:29.988428
+---> [ground truth] FID: 0.0023
+---> [Comp_v6_KLD01] FID: 0.6057
+Time: 2025-03-05 22:28:59.946073
+---> [ground truth] Diversity: 10.0531
+---> [Comp_v6_KLD01] Diversity: 9.1715
+Time: 2025-03-05 22:28:59.964988
+---> [Comp_v6_KLD01] Multimodality: 2.1696
+!!! DONE !!!
+==================== Replication 1 ====================
+Time: 2025-03-05 22:32:40.599406
+---> [ground truth] MM Dist: 2.3105
+---> [ground truth] R_precision: (top 1): 0.5855 (top 2): 0.7906 (top 3): 0.8812 
+---> [Comp_v6_KLD01] MM Dist: 3.1090
+---> [Comp_v6_KLD01] R_precision: (top 1): 0.4777 (top 2): 0.6613 (top 3): 0.7656 
+Time: 2025-03-05 22:33:35.760453
+---> [ground truth] FID: 0.0026
+---> [Comp_v6_KLD01] FID: 0.5982
+Time: 2025-03-05 22:34:04.808249
+---> [ground truth] Diversity: 10.1020
+---> [Comp_v6_KLD01] Diversity: 9.7010
+Time: 2025-03-05 22:34:04.810271
+---> [Comp_v6_KLD01] Multimodality: 2.0745
+!!! DONE !!!
+==================== Replication 2 ====================
+Time: 2025-03-05 22:37:54.730996
+---> [ground truth] MM Dist: 2.3826
+---> [ground truth] R_precision: (top 1): 0.5656 (top 2): 0.7695 (top 3): 0.8637 
+---> [Comp_v6_KLD01] MM Dist: 3.0790
+---> [Comp_v6_KLD01] R_precision: (top 1): 0.4727 (top 2): 0.6703 (top 3): 0.7648 
+Time: 2025-03-05 22:38:57.160901
+---> [ground truth] FID: 0.0026
+---> [Comp_v6_KLD01] FID: 0.6286
+Time: 2025-03-05 22:39:25.545118
+---> [ground truth] Diversity: 9.8109
+---> [Comp_v6_KLD01] Diversity: 9.7537
+Time: 2025-03-05 22:39:25.547118
+---> [Comp_v6_KLD01] Multimodality: 2.0219
+!!! DONE !!!
+==================== Replication 3 ====================
+Time: 2025-03-05 22:43:21.930245
+---> [ground truth] MM Dist: 2.3476
+---> [ground truth] R_precision: (top 1): 0.5813 (top 2): 0.7816 (top 3): 0.8699 
+---> [Comp_v6_KLD01] MM Dist: 3.0946
+---> [Comp_v6_KLD01] R_precision: (top 1): 0.4750 (top 2): 0.6598 (top 3): 0.7711 
+Time: 2025-03-05 22:44:20.574640
+---> [ground truth] FID: 0.0027
+---> [Comp_v6_KLD01] FID: 0.5664
+Time: 2025-03-05 22:44:49.206958
+---> [ground truth] Diversity: 10.0619
+---> [Comp_v6_KLD01] Diversity: 9.6119
+Time: 2025-03-05 22:44:49.208953
+---> [Comp_v6_KLD01] Multimodality: 1.8923
+!!! DONE !!!
+==================== Replication 4 ====================
+Time: 2025-03-05 22:48:46.793323
+---> [ground truth] MM Dist: 2.3482
+---> [ground truth] R_precision: (top 1): 0.5746 (top 2): 0.7746 (top 3): 0.8609 
+---> [Comp_v6_KLD01] MM Dist: 3.0564
+---> [Comp_v6_KLD01] R_precision: (top 1): 0.4852 (top 2): 0.6719 (top 3): 0.7742 
+Time: 2025-03-05 22:49:47.164850
+---> [ground truth] FID: 0.0023
+---> [Comp_v6_KLD01] FID: 0.5708
+Time: 2025-03-05 22:50:16.830026
+---> [ground truth] Diversity: 9.9684
+---> [Comp_v6_KLD01] Diversity: 9.6999
+Time: 2025-03-05 22:50:16.832019
+---> [Comp_v6_KLD01] Multimodality: 2.1540
+!!! DONE !!!
+========== MM Dist Summary ==========
+---> [ground truth] Mean: 2.3443 CInterval: 0.0206
+---> [Comp_v6_KLD01] Mean: 3.0787 CInterval: 0.0186
+========== R_precision Summary ==========
+---> [ground truth](top 1) Mean: 0.5766 CInt: 0.0059;(top 2) Mean: 0.7805 CInt: 0.0067;(top 3) Mean: 0.8718 CInt: 0.0079;
+---> [Comp_v6_KLD01](top 1) Mean: 0.4759 CInt: 0.0047;(top 2) Mean: 0.6670 CInt: 0.0047;(top 3) Mean: 0.7703 CInt: 0.0039;
+========== FID Summary ==========
+---> [ground truth] Mean: 0.0025 CInterval: 0.0001
+---> [Comp_v6_KLD01] Mean: 0.5939 CInterval: 0.0202
+========== Diversity Summary ==========
+---> [ground truth] Mean: 9.9993 CInterval: 0.0909
+---> [Comp_v6_KLD01] Mean: 9.5876 CInterval: 0.1867
+========== MultiModality Summary ==========
+---> [Comp_v6_KLD01] Mean: 2.0624 CInterval: 0.0882

@@ -11,18 +11,31 @@ from utils.utils import *
 from os.path import join as pjoin
 from data.dataset import collate_fn
 import codecs as cs
+import wandb
 
 
-class Logger(object):
-  def __init__(self, log_dir):
-    # self.writer = tf.summary.create_file_writer(log_dir)
-    pass
+# class Logger(object):
+#   def __init__(self, log_dir):
+#     # self.writer = tf.summary.create_file_writer(log_dir)
+#     pass
 
-  def scalar_summary(self, tag, value, step):
-    #   with self.writer.as_default():
-    #       tf.summary.scalar(tag, value, step=step)
-    #       self.writer.flush()
-    pass
+#   def scalar_summary(self, tag, value, step):
+#     #   with self.writer.as_default():
+#     #       tf.summary.scalar(tag, value, step=step)
+#     #       self.writer.flush()
+#     pass
+
+
+class Logger:
+    def __init__(self, log_dir, project_name="text-to-motion"):
+        # Инициализация wandb.
+        wandb.init(project=project_name, dir=log_dir)
+    
+    def scalar_summary(self, tag, value, step):
+        # Логирование скалярного значения в wandb
+        wandb.log({tag: value}, step=step)
+        # Вывод сообщения в консоль о сохранении логов
+        print(f"[Iteration {step}] Logged: {tag} = {value}")
 
 class DecompTrainerV3(object):
     def __init__(self, args, movement_enc, movement_dec):
@@ -160,8 +173,8 @@ class DecompTrainerV3(object):
 
                 it += 1
                 if it % self.opt.log_every == 0:
-                    mean_loss = OrderedDict({'val_loss': val_loss})
-                    self.logger.scalar_summary('val_loss', val_loss, it)
+                    mean_loss = OrderedDict({'iter_val_loss': val_loss})
+                    self.logger.scalar_summary('iter_val_loss', val_loss, it)
 
                     for tag, value in logs.items():
                         self.logger.scalar_summary(tag, value / self.opt.log_every, it)
@@ -717,6 +730,10 @@ class CompTrainerV6(object):
                 val_loss /= len(val_loader) + 1
                 print('Validation Loss: %.5f Movement Recon Loss: %.5f Motion Recon Loss: %.5f KLD Loss: %.5f:' %
                       (val_loss, loss_mov_rec, loss_mot_rec, loss_kld))
+                self.logger.scalar_summary('Validation Loss', val_loss, it)
+                self.logger.scalar_summary('Movement Recon Loss', loss_mov_rec, it)
+                self.logger.scalar_summary('Motion Recon Loss', loss_mot_rec, it)
+                self.logger.scalar_summary('KLD Loss', loss_kld, it)
 
                 if epoch % self.opt.eval_every_e == 0:
                     reco_data = self.fake_motions[:4]

@@ -2,7 +2,7 @@ import torch
 from torch.utils import data
 import numpy as np
 import os
-from os.path import join as pjoin
+from os.path import join as pjoin, realpath
 import random
 import codecs as cs
 from tqdm import tqdm
@@ -20,11 +20,12 @@ def collate_fn(batch):
 '''For use of training text-2-motion generative model'''
 class Text2MotionDataset(data.Dataset):
     def __init__(self, opt, mean, std, split_file, w_vectorizer):
+
         self.opt = opt
         self.w_vectorizer = w_vectorizer
         self.max_length = 20
         self.pointer = 0
-        min_motion_len = 40 if self.opt.dataset_name =='t2m' else 24
+        min_motion_len = 40 if self.opt.dataset_name == 't2m' else 24
 
         joints_num = opt.joints_num
 
@@ -83,11 +84,12 @@ class Text2MotionDataset(data.Dataset):
                                        'text':text_data}
                     new_name_list.append(name)
                     length_list.append(len(motion))
-            except:
+            except Exception as e:
+                print(e)
                 # Some motion may not exist in KIT dataset
-                pass
+                # pass
 
-
+        print(len(new_name_list), len(length_list))
         name_list, length_list = zip(*sorted(zip(new_name_list, length_list), key=lambda x: x[1]))
 
         if opt.is_train:
@@ -222,12 +224,12 @@ class Text2MotionDatasetV2(data.Dataset):
         length_list = []
         for name in tqdm(id_list):
             try:
-                motion = np.load(pjoin(opt.motion_dir, name + '.npy'))
+                motion = np.load(realpath(pjoin(opt.motion_dir, name + '.npy')))
                 if (len(motion)) < min_motion_len or (len(motion) >= 200):
                     continue
                 text_data = []
                 flag = False
-                with cs.open(pjoin(opt.text_dir, name + '.txt')) as f:
+                with cs.open(realpath(pjoin(opt.text_dir, name + '.txt'))) as f:
                     for line in f.readlines():
                         text_dict = {}
                         line_split = line.strip().split('#')
@@ -267,9 +269,12 @@ class Text2MotionDatasetV2(data.Dataset):
                                        'text': text_data}
                     new_name_list.append(name)
                     length_list.append(len(motion))
-            except:
+            except Exception as e:
+                # print(e)
                 pass
 
+        
+        print(len(new_name_list), len(length_list))
         name_list, length_list = zip(*sorted(zip(new_name_list, length_list), key=lambda x: x[1]))
 
         self.mean = mean

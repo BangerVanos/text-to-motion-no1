@@ -7,12 +7,78 @@ from options.evaluate_options import TestOptions
 from torch.utils.data import DataLoader
 from utils.plot_script import *
 
+
 from networks.modules import *
 from networks.trainers import CompTrainerV6
 from data.dataset import RawTextDataset
 from scripts.motion_process import *
 from utils.word_vectorizer import WordVectorizer, POS_enumerator
 from utils.utils import *
+
+# from render_final import render
+from visualization.joints2bvh import Joint2BVHConvertor
+
+import string
+
+
+MAPPING = {
+    # Нижняя часть тела
+    0: 0,   # Таз (корневой сустав)
+    1: 1,   # Правое бедро
+    2: 2,   # Правое колено
+    3: 3,   # Правая лодыжка
+    4: 4,   # Левое бедро
+    5: 5,   # Левое колено
+    6: 6,   # Левая лодыжка
+    
+    # Позвоночник
+    7: 7,   # Спина (нижняя часть)
+    8: 8,   # Спина (средняя часть)
+    9: 9,   # Шея
+    
+    # Голова
+    10: 10, # Голова
+    
+    # Левая рука
+    11: 16, # Левое плечо
+    12: 17, # Левый локоть
+    13: 18, # Левое запястье
+    
+    # Правая рука
+    14: 13, # Правое плечо
+    15: 14, # Правый локоть
+    16: 15, # Правое запястье
+    
+    # Левая кисть (аппроксимация)
+    17: 19, # Левая ладонь
+    
+    # Правая кисть (аппроксимация)
+    18: 20, # Правая ладонь
+    
+    # Дополнительные суставы (без четких соответствий)
+    19: 11, # Левое бедро (дополнительное)
+    20: 12, # Правое бедро (дополнительное)
+    21: 9,  # Верх спины (дублирует шею)
+    22: 8,  # Грудь (дублирует среднюю часть спины)
+    23: 7   # Поясница (дублирует нижнюю часть спины)
+}
+
+
+def sanitize_filename(text):
+    """
+    Преобразует строку в безопасное имя файла.
+
+    Args:
+        text: Исходная строка.
+
+    Returns:
+        Строка, пригодная для использования в качестве имени файла.
+    """
+    text = text.lower()  # Приведение к нижнему регистру
+    text = text.translate(str.maketrans('', '', string.punctuation))  # Удаление знаков препинания
+    text = text.replace(' ', '_')  # Замена пробелов на нижние подчеркивания
+    return text
+
 
 def plot_t2m(data, save_dir, captions):
     data = dataset.inv_transform(data)
@@ -25,7 +91,15 @@ def plot_t2m(data, save_dir, captions):
 
         joint = motion_temporal_filter(joint, sigma=1)
         np.save(save_path + '_a.npy', joint)
-        plot_3d_motion(save_path + '_a.mp4', paramUtil.t2m_kinematic_chain, joint, title=caption, fps=20)
+        # plot_3d_motion(save_path + '_a.mp4', paramUtil.t2m_kinematic_chain, joint, title=caption, fps=20)        
+        plot_3d_motion_plotly(save_path + '_a.html', paramUtil.t2m_kinematic_chain, joint, title=caption, fps=20)
+        # animate_smplx_from_joints('./meshes/SMPLX_NEUTRAL.npz', joint, out_file='simple_animation.gif',
+        #                           fps=120, device='cuda', cam_distance=5, cam_height=0)
+        # render_smplx_animation(joints=joint, mesh_path='./meshes/SMPL_NEUTRAL.pkl', kinematic_tree=paramUtil.t2m_kinematic_chain,
+        #                        device='cuda', fps=30, output_path='animation.mp4', mapping=MAPPING)
+        anim_converter = Joint2BVHConvertor()
+        anim_converter.convert(joint, save_path + '_a.bvh', iterations=10, foot_ik=True)
+        # render(motions=joint, mesh_path='./meshes')
 
 
 def loadDecompModel(opt):
@@ -81,7 +155,14 @@ if __name__ == '__main__':
     opt = parser.parse()
     opt.do_denoise = True
 
-    opt.device = torch.device("cpu" if opt.gpu_id==-1 else "cuda:" + str(opt.gpu_id))
+    # If we run script on Macbook with MPS support
+    on_mac: bool = False
+
+    if not on_mac:
+        opt.device = torch.device("cpu" if opt.gpu_id==-1 else "cuda:" + str(opt.gpu_id))
+    else:
+        opt.device = torch.device("cpu" if not torch.backends.mps.is_available() else "mps")
+    print(f'Device used: {opt.device.type}')
     torch.autograd.set_detect_anomaly(True)
 
     opt.save_root = pjoin(opt.checkpoints_dir, opt.dataset_name, opt.name)
@@ -184,6 +265,7 @@ if __name__ == '__main__':
     for i, (key, item) in enumerate(result_dict.items()):
         print('%02d_%03d'%(i, len(result_dict)))
         captions = item['caption']
+        clean_caption = sanitize_filename(captions[0])
         joint_save_path = pjoin(opt.joint_dir, key)
         animation_save_path = pjoin(opt.animation_dir, key)
         os.makedirs(joint_save_path, exist_ok=True)
@@ -192,6 +274,6 @@ if __name__ == '__main__':
             sub_dict = item['result_%02d'%t]
             motion = sub_dict['motion']
             att_wgts = sub_dict['att_wgts']
-            np.save(pjoin(joint_save_path, 'gen_motion_%02d_L%03d.npy' % (t, motion.shape[1])), motion)
+            np.save(pjoin(joint_save_path, '%s_gen_motion_%02d_L%03d.npy' % (clean_caption, t, motion.shape[1])), motion)
             # np.save(pjoin(joint_save_path, 'att_wgt_%02d_L%03d.npy' % (t, motion.shape[1])), att_wgts)
-            plot_t2m(motion, pjoin(animation_save_path, 'gen_motion_%02d_L%03d' % (t, motion.shape[1])), captions)
+            plot_t2m(motion, pjoin(animation_save_path, '%s_gen_motion_%02d_L%03d' % (clean_caption, t, motion.shape[1])), captions)

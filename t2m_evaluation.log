@@ -1,0 +1,89 @@
+==================== Replication 0 ====================
+Time: 2025-03-04 23:13:08.660322
+---> [ground truth] Matching Score: 2.6884
+---> [ground truth] R_precision: (top 1): 0.5268 (top 2): 0.7366 (top 3): 0.8304 
+---> [Comp_v6_KLD02] Matching Score: 3.6803
+---> [Comp_v6_KLD02] R_precision: (top 1): 0.3839 (top 2): 0.5614 (top 3): 0.6775 
+Time: 2025-03-04 23:14:11.933252
+---> [ground truth] FID: 0.0029
+---> [Comp_v6_KLD02] FID: 1.0286
+Time: 2025-03-04 23:14:41.093415
+---> [ground truth] Diversity: 10.1915
+---> [Comp_v6_KLD02] Diversity: 10.0607
+Time: 2025-03-04 23:14:41.111368
+---> [Comp_v6_KLD02] Multimodality: 2.9724
+!!! DONE !!!
+==================== Replication 1 ====================
+Time: 2025-03-04 23:18:42.311962
+---> [ground truth] Matching Score: 2.6776
+---> [ground truth] R_precision: (top 1): 0.5212 (top 2): 0.7251 (top 3): 0.8207 
+---> [Comp_v6_KLD02] Matching Score: 3.5758
+---> [Comp_v6_KLD02] R_precision: (top 1): 0.3876 (top 2): 0.5714 (top 3): 0.6864 
+Time: 2025-03-04 23:19:55.765353
+---> [ground truth] FID: 0.0040
+---> [Comp_v6_KLD02] FID: 1.0401
+Time: 2025-03-04 23:20:41.917994
+---> [ground truth] Diversity: 10.0393
+---> [Comp_v6_KLD02] Diversity: 9.7660
+Time: 2025-03-04 23:20:41.937911
+---> [Comp_v6_KLD02] Multimodality: 2.6048
+!!! DONE !!!
+==================== Replication 2 ====================
+Time: 2025-03-04 23:24:44.538736
+---> [ground truth] Matching Score: 2.7205
+---> [ground truth] R_precision: (top 1): 0.5186 (top 2): 0.7284 (top 3): 0.8248 
+---> [Comp_v6_KLD02] Matching Score: 3.6066
+---> [Comp_v6_KLD02] R_precision: (top 1): 0.3787 (top 2): 0.5904 (top 3): 0.6987 
+Time: 2025-03-04 23:25:52.230771
+---> [ground truth] FID: 0.0029
+---> [Comp_v6_KLD02] FID: 1.0249
+Time: 2025-03-04 23:26:39.521134
+---> [ground truth] Diversity: 9.9417
+---> [Comp_v6_KLD02] Diversity: 10.2367
+Time: 2025-03-04 23:26:39.538088
+---> [Comp_v6_KLD02] Multimodality: 2.9762
+!!! DONE !!!
+==================== Replication 3 ====================
+Time: 2025-03-04 23:30:54.845327
+---> [ground truth] Matching Score: 2.7250
+---> [ground truth] R_precision: (top 1): 0.5238 (top 2): 0.7303 (top 3): 0.8259 
+---> [Comp_v6_KLD02] Matching Score: 3.6440
+---> [Comp_v6_KLD02] R_precision: (top 1): 0.3806 (top 2): 0.5740 (top 3): 0.6923 
+Time: 2025-03-04 23:31:58.742137
+---> [ground truth] FID: 0.0026
+---> [Comp_v6_KLD02] FID: 1.0075
+Time: 2025-03-04 23:32:28.580547
+---> [ground truth] Diversity: 9.7257
+---> [Comp_v6_KLD02] Diversity: 9.9859
+Time: 2025-03-04 23:32:28.582559
+---> [Comp_v6_KLD02] Multimodality: 2.9575
+!!! DONE !!!
+==================== Replication 4 ====================
+Time: 2025-03-04 23:36:30.440893
+---> [ground truth] Matching Score: 2.7295
+---> [ground truth] R_precision: (top 1): 0.5324 (top 2): 0.7459 (top 3): 0.8359 
+---> [Comp_v6_KLD02] Matching Score: 3.6073
+---> [Comp_v6_KLD02] R_precision: (top 1): 0.3824 (top 2): 0.5792 (top 3): 0.6890 
+Time: 2025-03-04 23:37:30.143239
+---> [ground truth] FID: 0.0031
+---> [Comp_v6_KLD02] FID: 1.0768
+Time: 2025-03-04 23:37:58.741520
+---> [ground truth] Diversity: 10.0364
+---> [Comp_v6_KLD02] Diversity: 9.8547
+Time: 2025-03-04 23:37:58.744492
+---> [Comp_v6_KLD02] Multimodality: 2.9804
+!!! DONE !!!
+========== Matching Score Summary ==========
+---> [ground truth] Mean: 2.7082 CInterval: 0.0185
+---> [Comp_v6_KLD02] Mean: 3.6228 CInterval: 0.0315
+========== R_precision Summary ==========
+---> [ground truth](top 1) Mean: 0.5246 CInt: 0.0042;(top 2) Mean: 0.7333 CInt: 0.0064;(top 3) Mean: 0.8275 CInt: 0.0046;
+---> [Comp_v6_KLD02](top 1) Mean: 0.3827 CInt: 0.0027;(top 2) Mean: 0.5753 CInt: 0.0084;(top 3) Mean: 0.6888 CInt: 0.0061;
+========== FID Summary ==========
+---> [ground truth] Mean: 0.0031 CInterval: 0.0004
+---> [Comp_v6_KLD02] Mean: 1.0356 CInterval: 0.0203
+========== Diversity Summary ==========
+---> [ground truth] Mean: 9.9869 CInterval: 0.1343
+---> [Comp_v6_KLD02] Mean: 9.9808 CInterval: 0.1435
+========== MultiModality Summary ==========
+---> [Comp_v6_KLD02] Mean: 2.8982 CInterval: 0.1288

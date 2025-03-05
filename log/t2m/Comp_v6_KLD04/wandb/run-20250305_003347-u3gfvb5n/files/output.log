@@ -1,0 +1,11 @@
+  3%|███▏                                                                                                                           | 343/13702 [00:13<08:32, 26.07it/s]
+Traceback (most recent call last):
+  File "D:\Programms\Programming\PythonProjects\text-to-motion\train_comp_v6.py", line 146, in <module>
+    train_dataset = Text2MotionDataset(opt, mean, std, train_split_file, w_vectorizer)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programms\Programming\PythonProjects\text-to-motion\data\dataset.py", line 47, in __init__
+    with cs.open(pjoin(opt.text_dir, name + '.txt')) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen codecs>", line 918, in open
+  File "<frozen codecs>", line 260, in __init__
+KeyboardInterrupt

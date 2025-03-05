@@ -1,0 +1,10 @@
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13702/13702 [07:02<00:00, 32.41it/s]
+[Errno 2] No such file or directory: 'D:\\Programms\\Programming\\PythonProjects\\text-to-motion\\dataset\\HumanML3D\\new_joint_vecs\\M012314.npy'
+14035 14035
+Pointer Pointing at 0
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1714/1714 [00:46<00:00, 36.70it/s]
+1812 1812
+Pointer Pointing at 0
+Pointer Pointing at 0
+Pointer Pointing at 0
+Max_Length:010 Training Split:00438 Validation Split:0056

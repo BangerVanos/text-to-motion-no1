@@ -30,7 +30,7 @@ def evaluate_matching_score(motion_loaders, file):
     R_precision_dict = OrderedDict({})
     activation_dict = OrderedDict({})
     # print(motion_loaders.keys())
-    print('========== Evaluating Matching Score ==========')
+    print('========== Evaluating MM Dist ==========')
     for motion_loader_name, motion_loader in motion_loaders.items():
         all_motion_embeddings = []
         score_list = []
@@ -67,8 +67,8 @@ def evaluate_matching_score(motion_loaders, file):
             R_precision_dict[motion_loader_name] = R_precision
             activation_dict[motion_loader_name] = all_motion_embeddings
 
-        print(f'---> [{motion_loader_name}] Matching Score: {matching_score:.4f}')
-        print(f'---> [{motion_loader_name}] Matching Score: {matching_score:.4f}', file=file, flush=True)
+        print(f'---> [{motion_loader_name}] MM Dist: {matching_score:.4f}')
+        print(f'---> [{motion_loader_name}] MM Dist: {matching_score:.4f}', file=file, flush=True)
 
         line = f'---> [{motion_loader_name}] R_precision: '
         for i in range(len(R_precision)):
@@ -147,7 +147,7 @@ def get_metric_statistics(values):
 
 def evaluation(log_file):
     with open(log_file, 'w') as f:
-        all_metrics = OrderedDict({'Matching Score': OrderedDict({}),
+        all_metrics = OrderedDict({'MM Dist': OrderedDict({}),
                                    'R_precision': OrderedDict({}),
                                    'FID': OrderedDict({}),
                                    'Diversity': OrderedDict({}),
@@ -183,10 +183,10 @@ def evaluation(log_file):
             print(f'!!! DONE !!!', file=f, flush=True)
 
             for key, item in mat_score_dict.items():
-                if key not in all_metrics['Matching Score']:
-                    all_metrics['Matching Score'][key] = [item]
+                if key not in all_metrics['MM Dist']:
+                    all_metrics['MM Dist'][key] = [item]
                 else:
-                    all_metrics['Matching Score'][key] += [item]
+                    all_metrics['MM Dist'][key] += [item]
 
             for key, item in R_precision_dict.items():
                 if key not in all_metrics['R_precision']:
@@ -270,14 +270,17 @@ def animation_4_user_study(save_dir):
 
 
 if __name__ == '__main__':
+    on_mac: bool = False
     # dataset_opt_path = './checkpoints/kit/Comp_v6_KLD005/opt.txt'
-    dataset_opt_path = './checkpoints/t2m/Comp_v6_KLD01/opt.txt'
+    evaluation_target_checkpoint: str = 'Comp_v6_KLD005'
+    dataset_name: str = 'kit'
+    dataset_opt_path = f'./checkpoints/{dataset_name}/{evaluation_target_checkpoint}/opt.txt'
     eval_motion_loaders = {
         ################
         ## HumanML3D Dataset##
         ################
-        'Comp_v6_KLD01': lambda: get_motion_loader(
-            './checkpoints/t2m/Comp_v6_KLD01/opt.txt',
+        f'{evaluation_target_checkpoint}': lambda: get_motion_loader(
+            f'./checkpoints/{dataset_name}/{evaluation_target_checkpoint}/opt.txt',
             batch_size, gt_dataset, mm_num_samples, mm_num_repeats, device
         )
 
@@ -290,10 +293,13 @@ if __name__ == '__main__':
         # ),
     }
 
-    device_id = 3
-    device = torch.device('cuda:%d'%device_id if torch.cuda.is_available() else 'cpu')
-    torch.cuda.set_device(device_id)
-
+    device_id = 0
+    if not on_mac:
+        device = torch.device('cuda:%d'%device_id if torch.cuda.is_available() else 'cpu')
+        torch.cuda.set_device(device_id)
+    else:
+        device = torch.device("cpu" if not torch.backends.mps.is_available() else "mps")
+    print(f'Device used: {device.type}')
     mm_num_samples = 100
     # mm_num_samples = 0
 
@@ -301,7 +307,7 @@ if __name__ == '__main__':
     mm_num_times = 10
 
     diversity_times = 300
-    replication_times = 20
+    replication_times = 5
     batch_size = 32
 
 
@@ -314,6 +320,6 @@ if __name__ == '__main__':
     wrapper_opt = get_opt(dataset_opt_path, device)
     eval_wrapper = EvaluatorModelWrapper(wrapper_opt)
 
-    log_file = './t2m_evaluation.log'
+    log_file = f'./{dataset_name}_evaluation_{evaluation_target_checkpoint}.log'
     evaluation(log_file)
     # animation_4_user_study('./user_study_t2m/')

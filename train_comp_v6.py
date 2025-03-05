@@ -1,6 +1,6 @@
 import os
 
-from os.path import join as pjoin
+from os.path import join as pjoin, realpath
 
 import utils.paramUtil as paramUtil
 from options.train_options import TrainCompOptions
@@ -12,13 +12,13 @@ from data.dataset import Text2MotionDataset
 from scripts.motion_process import *
 from utils.word_vectorizer import WordVectorizer, POS_enumerator
 
+
 def plot_t2m(data, save_dir, captions, ep_curves=None):
     data = train_dataset.inv_transform(data)
     # print(ep_curves.shape)
     for i, (caption, joint_data) in enumerate(zip(captions, data)):
-        joint = recover_from_ric(torch.from_numpy(joint_data).float(), opt.joints_num).numpy()
-        save_path = pjoin(save_dir, '%02d.mp4'%(i))
-        plot_3d_motion(save_path, kinematic_chain, joint, title=caption, fps=fps, radius=radius)
+        joint = recover_from_ric(torch.from_numpy(joint_data).float(), opt.joints_num).numpy()        
+        plot_3d_motion_plotly(pjoin(save_dir, '%02d.html'%(i)), paramUtil.t2m_kinematic_chain, joint, title=caption, fps=20)
         # print(ep_curve.shape)
         if ep_curves is not None:
             ep_curve = ep_curves[i]
@@ -94,6 +94,9 @@ if __name__ == '__main__':
     opt.eval_dir = pjoin(opt.save_root, 'animation')
     opt.log_dir = pjoin('./log', opt.dataset_name, opt.name)
 
+    # We want to continue training
+    opt.is_continue = True
+
     os.makedirs(opt.model_dir, exist_ok=True)
     os.makedirs(opt.meta_dir, exist_ok=True)
     os.makedirs(opt.eval_dir, exist_ok=True)
@@ -101,8 +104,8 @@ if __name__ == '__main__':
 
     if opt.dataset_name == 't2m':
         opt.data_root = './dataset/HumanML3D'
-        opt.motion_dir = pjoin(opt.data_root, 'new_joint_vecs')
-        opt.text_dir = pjoin(opt.data_root, 'texts')
+        opt.motion_dir = realpath(pjoin(opt.data_root, 'new_joint_vecs'))
+        opt.text_dir = realpath(pjoin(opt.data_root, 'texts'))
         opt.joints_num = 22
         radius = 4
         fps = 20
