@@ -74,8 +74,8 @@ class CompV6GeneratedDataset(Dataset):
                 word_emb, pos_ohot, caption, cap_lens, motions, m_lens, tokens = data
                 tokens = tokens[0].split('_')
                 # print(tokens)
-                word_emb = word_emb.detach().to(opt.device).float()
-                pos_ohot = pos_ohot.detach().to(opt.device).float()
+                word_emb = word_emb.detach().float().to(opt.device)
+                pos_ohot = pos_ohot.detach().float().to(opt.device)
 
                 # print(cap_lens)
                 pred_dis = len_estimator(word_emb, pos_ohot, cap_lens)

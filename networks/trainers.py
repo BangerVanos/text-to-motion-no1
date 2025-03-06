@@ -68,7 +68,7 @@ class DecompTrainerV3(object):
 
     def forward(self, batch_data):
         motions = batch_data
-        self.motions = motions.detach().to(self.device).float()
+        self.motions = motions.detach().float().to(self.device)
         self.latents = self.movement_enc(self.motions[..., :-4])
         self.recon_motions = self.movement_dec(self.latents)
 
@@ -291,9 +291,9 @@ class CompTrainerV6(object):
 
     def forward(self, batch_data, tf_ratio, mov_len, eval_mode=False):
         word_emb, pos_ohot, caption, cap_lens, motions, m_lens = batch_data
-        word_emb = word_emb.detach().to(self.device).float()
-        pos_ohot = pos_ohot.detach().to(self.device).float()
-        motions = motions.detach().to(self.device).float()
+        word_emb = word_emb.detach().float().to(self.device)
+        pos_ohot = pos_ohot.detach().float().to(self.device)
+        motions = motions.detach().float().to(self.device)
         self.cap_lens = cap_lens
         self.caption = caption
 
@@ -395,8 +395,8 @@ class CompTrainerV6(object):
         self.logvars_pri = torch.cat(logvars_pri, dim=0)
 
     def generate(self, word_emb, pos_ohot, cap_lens, m_lens, mov_len, dim_pose):
-        word_emb = word_emb.detach().to(self.device).float()
-        pos_ohot = pos_ohot.detach().to(self.device).float()
+        word_emb = word_emb.detach().float().to(self.device)
+        pos_ohot = pos_ohot.detach().float().to(self.device)
         self.cap_lens = cap_lens
 
         # print(motions.shape)
@@ -830,8 +830,8 @@ class LengthEstTrainer(object):
                 self.estimator.train()
 
                 word_emb, pos_ohot, _, cap_lens, _, m_lens = batch_data
-                word_emb = word_emb.detach().to(self.device).float()
-                pos_ohot = pos_ohot.detach().to(self.device).float()
+                word_emb = word_emb.detach().float().to(self.device)
+                pos_ohot = pos_ohot.detach().float().to(self.device)
 
                 pred_dis = self.estimator(word_emb, pos_ohot, cap_lens)
 
@@ -876,8 +876,8 @@ class LengthEstTrainer(object):
             with torch.no_grad():
                 for i, batch_data in enumerate(val_dataloader):
                     word_emb, pos_ohot, _, cap_lens, _, m_lens = batch_data
-                    word_emb = word_emb.detach().to(self.device).float()
-                    pos_ohot = pos_ohot.detach().to(self.device).float()
+                    word_emb = word_emb.detach().float().to(self.device)
+                    pos_ohot = pos_ohot.detach().float().to(self.device)
 
                     pred_dis = self.estimator(word_emb, pos_ohot, cap_lens)
 
@@ -959,9 +959,9 @@ class TextMotionMatchTrainer(object):
 
     def forward(self, batch_data):
         word_emb, pos_ohot, caption, cap_lens, motions, m_lens, _ = batch_data
-        word_emb = word_emb.detach().to(self.device).float()
-        pos_ohot = pos_ohot.detach().to(self.device).float()
-        motions = motions.detach().to(self.device).float()
+        word_emb = word_emb.detach().float().to(self.device)
+        pos_ohot = pos_ohot.detach().float().to(self.device)
+        motions = motions.detach().float().to(self.device)
 
         # Sort the length of motions in descending order, (length of text has been sorted)
         self.align_idx = np.argsort(m_lens.data.tolist())[::-1].copy()

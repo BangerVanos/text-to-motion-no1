@@ -149,8 +149,8 @@ if __name__ == '__main__':
 
             if opt.est_length:
                 word_emb, pos_ohot, caption, cap_lens, _, m_lens = data
-                word_emb = word_emb.detach().to(opt.device).float()
-                pos_ohot = pos_ohot.detach().to(opt.device).float()
+                word_emb = word_emb.detach().float().to(opt.device)
+                pos_ohot = pos_ohot.detach().float().to(opt.device)
 
                 pred_dis = estimator(word_emb, pos_ohot, cap_lens)
                 pred_dis = nn.Softmax(-1)(pred_dis).squeeze()
