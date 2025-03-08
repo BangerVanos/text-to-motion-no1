@@ -1,0 +1,41 @@
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4888/4888 [02:46<00:00, 29.34it/s]
+list index out of range
+[Errno 2] No such file or directory: './dataset/KIT-ML\\new_joint_vecs\\00942.npy'
+list index out of range
+list index out of range
+list index out of range
+[Errno 2] No such file or directory: './dataset/KIT-ML\\new_joint_vecs\\M00942.npy'
+list index out of range
+list index out of range
+4394 4394
+Pointer Pointing at 0
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 300/300 [00:09<00:00, 32.58it/s]
+288 288
+Pointer Pointing at 0
+Pointer Pointing at 3906
+Pointer Pointing at 250
+Max_Length:028 Training Split:00015 Validation Split:0001
+[Iteration 72600] Logged: val_loss = 0
+[Iteration 72600] Logged: scheduled_length = 28
+[Iteration 72600] Logged: loss_gen = 0.04564970672130585
+[Iteration 72600] Logged: loss_mot_rec = 0.039071201384067535
+[Iteration 72600] Logged: loss_mov_rec = 0.004448775202035904
+[Iteration 72600] Logged: loss_kld = 0.4259461104869843
+epoch: 204 niter:  72600 sub_epoch:  4 inner_iter:   12 0m 52s val_loss: 0.0000  loss_gen: 0.0456  loss_mot_rec: 0.0391  loss_mov_rec: 0.0044  loss_kld: 0.4259  sl_length:28 tf_ratio:0.40
+Validation time:
+Validation Loss: 0.16833 Movement Recon Loss: 0.01805 Motion Recon Loss: 0.11424 KLD Loss: 7.20661:
+[Iteration 72602] Logged: Validation Loss = 0.16833046078681946
+[Iteration 72602] Logged: Movement Recon Loss = 0.01805361919105053
+[Iteration 72602] Logged: Motion Recon Loss = 0.1142437756061554
+[Iteration 72602] Logged: KLD Loss = 7.206613540649414
+Traceback (most recent call last):
+  File "D:\Programms\Programming\PythonProjects\text-to-motion\train_comp_v6.py", line 152, in <module>
+    trainer.train(train_dataset, val_dataset, plot_t2m)
+  File "D:\Programms\Programming\PythonProjects\text-to-motion\networks\trainers.py", line 748, in train
+    plot_eval(data, save_dir, captions)
+  File "D:\Programms\Programming\PythonProjects\text-to-motion\train_comp_v6.py", line 21, in plot_t2m
+    plot_3d_motion_plotly(pjoin(save_dir, '%02d.html'%(i)), paramUtil.t2m_kinematic_chain, joint, title=caption, fps=20)
+  File "D:\Programms\Programming\PythonProjects\text-to-motion\utils\plot_script.py", line 547, in plot_3d_motion_plotly
+    chain_x = data_new[i, chain, 0].tolist()
+              ~~~~~~~~^^^^^^^^^^^^^
+IndexError: index 21 is out of bounds for axis 1 with size 21

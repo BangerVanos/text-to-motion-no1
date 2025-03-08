@@ -1,0 +1,102 @@
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2500/2500 [01:45<00:00, 23.80it/s]
+2574 2574
+Pointer Pointing at 0
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 500/500 [00:19<00:00, 25.05it/s]
+506 506
+Pointer Pointing at 0
+Pointer Pointing at 2194
+Pointer Pointing at 448
+Max_Length:049 Training Split:00011 Validation Split:0001
+Validation time:
+Validation Loss: 0.07995 Movement Recon Loss: 0.03558 Motion Recon Loss: 0.03415 KLD Loss: 1.02166:
+[Iteration 187985] Logged: Validation Loss = 0.07994510233402252
+[Iteration 187985] Logged: Movement Recon Loss = 0.03557727113366127
+[Iteration 187985] Logged: Motion Recon Loss = 0.03415122255682945
+[Iteration 187985] Logged: KLD Loss = 1.0216612815856934
+Validation time:
+Validation Loss: 0.07087 Movement Recon Loss: 0.03010 Motion Recon Loss: 0.03069 KLD Loss: 1.00820:
+[Iteration 187996] Logged: Validation Loss = 0.07087379693984985
+[Iteration 187996] Logged: Movement Recon Loss = 0.03009948693215847
+[Iteration 187996] Logged: Motion Recon Loss = 0.03069230727851391
+[Iteration 187996] Logged: KLD Loss = 1.0082001686096191
+[Iteration 188000] Logged: val_loss = 0.07087379693984985
+[Iteration 188000] Logged: scheduled_length = 49
+[Iteration 188000] Logged: loss_gen = 0.05565243437886238
+[Iteration 188000] Logged: loss_mot_rec = 0.02394531436264515
+[Iteration 188000] Logged: loss_mov_rec = 0.024759201630949974
+[Iteration 188000] Logged: loss_kld = 0.6947919124364853
+epoch: 346 niter: 188000 sub_epoch: 11 inner_iter:    3 3m 41s val_loss: 0.0709  loss_gen: 0.0557  loss_mot_rec: 0.0239  loss_mov_rec: 0.0248  loss_kld: 0.6948  sl_length:49 tf_ratio:0.40
+Validation time:
+Validation Loss: 0.06928 Movement Recon Loss: 0.02976 Motion Recon Loss: 0.02948 KLD Loss: 1.00342:
+[Iteration 188007] Logged: Validation Loss = 0.06928262114524841
+[Iteration 188007] Logged: Movement Recon Loss = 0.02976490557193756
+[Iteration 188007] Logged: Motion Recon Loss = 0.029483508318662643
+[Iteration 188007] Logged: KLD Loss = 1.0034210681915283
+Validation time:
+Validation Loss: 0.06569 Movement Recon Loss: 0.02870 Motion Recon Loss: 0.02737 KLD Loss: 0.96229:
+[Iteration 188018] Logged: Validation Loss = 0.06569162011146545
+[Iteration 188018] Logged: Movement Recon Loss = 0.028703071177005768
+[Iteration 188018] Logged: Motion Recon Loss = 0.027365652844309807
+[Iteration 188018] Logged: KLD Loss = 0.9622894525527954
+Validation time:
+Validation Loss: 0.07373 Movement Recon Loss: 0.03259 Motion Recon Loss: 0.03031 KLD Loss: 1.08360:
+[Iteration 188029] Logged: Validation Loss = 0.07373404502868652
+[Iteration 188029] Logged: Movement Recon Loss = 0.03258894756436348
+[Iteration 188029] Logged: Motion Recon Loss = 0.030309123918414116
+[Iteration 188029] Logged: KLD Loss = 1.0835973024368286
+Validation time:
+Validation Loss: 0.08580 Movement Recon Loss: 0.03753 Motion Recon Loss: 0.03427 KLD Loss: 1.40007:
+[Iteration 188040] Logged: Validation Loss = 0.08580305427312851
+[Iteration 188040] Logged: Movement Recon Loss = 0.03753054887056351
+[Iteration 188040] Logged: Motion Recon Loss = 0.03427175059914589
+[Iteration 188040] Logged: KLD Loss = 1.4000749588012695
+[Iteration 188050] Logged: val_loss = 0.08580305427312851
+[Iteration 188050] Logged: scheduled_length = 49
+[Iteration 188050] Logged: loss_gen = 0.10103355661034584
+[Iteration 188050] Logged: loss_mot_rec = 0.04210200745612383
+[Iteration 188050] Logged: loss_mov_rec = 0.04515652470290661
+[Iteration 188050] Logged: loss_kld = 1.3775024020671844
+epoch: 350 niter: 188050 sub_epoch: 15 inner_iter:    9 9m 9s val_loss: 0.0858  loss_gen: 0.1010  loss_mot_rec: 0.0421  loss_mov_rec: 0.0452  loss_kld: 1.3775  sl_length:49 tf_ratio:0.40
+Validation time:
+Validation Loss: 0.05311 Movement Recon Loss: 0.02334 Motion Recon Loss: 0.02215 KLD Loss: 0.76256:
+[Iteration 188051] Logged: Validation Loss = 0.0531134270131588
+[Iteration 188051] Logged: Movement Recon Loss = 0.023340275511145592
+[Iteration 188051] Logged: Motion Recon Loss = 0.022147567942738533
+[Iteration 188051] Logged: KLD Loss = 0.7625584602355957
+Validation time:
+Validation Loss: 0.05035 Movement Recon Loss: 0.02164 Motion Recon Loss: 0.02119 KLD Loss: 0.75254:
+[Iteration 188062] Logged: Validation Loss = 0.0503544919192791
+[Iteration 188062] Logged: Movement Recon Loss = 0.021639039739966393
+[Iteration 188062] Logged: Motion Recon Loss = 0.02119004912674427
+[Iteration 188062] Logged: KLD Loss = 0.7525404095649719
+Validation time:
+Validation Loss: 0.07794 Movement Recon Loss: 0.03459 Motion Recon Loss: 0.03135 KLD Loss: 1.19994:
+[Iteration 188073] Logged: Validation Loss = 0.07794222980737686
+[Iteration 188073] Logged: Movement Recon Loss = 0.034590743482112885
+[Iteration 188073] Logged: Motion Recon Loss = 0.03135208785533905
+[Iteration 188073] Logged: KLD Loss = 1.1999396085739136
+Validation time:
+Validation Loss: 0.06992 Movement Recon Loss: 0.03055 Motion Recon Loss: 0.02822 KLD Loss: 1.11479:
+[Iteration 188084] Logged: Validation Loss = 0.06992115080356598
+[Iteration 188084] Logged: Movement Recon Loss = 0.030553631484508514
+[Iteration 188084] Logged: Motion Recon Loss = 0.028219640254974365
+[Iteration 188084] Logged: KLD Loss = 1.1147879362106323
+Validation time:
+Validation Loss: 0.07421 Movement Recon Loss: 0.03251 Motion Recon Loss: 0.02957 KLD Loss: 1.21299:
+[Iteration 188095] Logged: Validation Loss = 0.07421423494815826
+[Iteration 188095] Logged: Movement Recon Loss = 0.03251131251454353
+[Iteration 188095] Logged: Motion Recon Loss = 0.02957298420369625
+[Iteration 188095] Logged: KLD Loss = 1.2129936218261719
+[Iteration 188100] Logged: val_loss = 0.07421423494815826
+[Iteration 188100] Logged: scheduled_length = 49
+[Iteration 188100] Logged: loss_gen = 0.07374847505241633
+[Iteration 188100] Logged: loss_mot_rec = 0.02898693209514022
+[Iteration 188100] Logged: loss_mov_rec = 0.0347048893943429
+[Iteration 188100] Logged: loss_kld = 1.005665420293808
+epoch: 355 niter: 188100 sub_epoch: 20 inner_iter:    4 15m 24s val_loss: 0.0742  loss_gen: 0.0737  loss_mot_rec: 0.0290  loss_mov_rec: 0.0347  loss_kld: 1.0057  sl_length:49 tf_ratio:0.40
+Validation time:
+Validation Loss: 0.07416 Movement Recon Loss: 0.03235 Motion Recon Loss: 0.02932 KLD Loss: 1.24851:
+[Iteration 188106] Logged: Validation Loss = 0.0741553083062172
+[Iteration 188106] Logged: Movement Recon Loss = 0.03235151618719101
+[Iteration 188106] Logged: Motion Recon Loss = 0.029318667948246002
+[Iteration 188106] Logged: KLD Loss = 1.2485122680664062

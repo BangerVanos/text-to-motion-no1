@@ -1,0 +1,7 @@
+{"time":"2025-03-08T17:39:27.1914331+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"log\\kit\\Comp_v6_KLD005\\wandb\\run-20250308_173927-gcbdkml6\\logs\\debug-core.log"}
+{"time":"2025-03-08T17:39:27.3014713+03:00","level":"INFO","msg":"created new stream","id":"gcbdkml6"}
+{"time":"2025-03-08T17:39:27.3014713+03:00","level":"INFO","msg":"stream: started","id":"gcbdkml6"}
+{"time":"2025-03-08T17:39:27.3021728+03:00","level":"INFO","msg":"sender: started","stream_id":"gcbdkml6"}
+{"time":"2025-03-08T17:39:27.3022145+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"gcbdkml6"}
+{"time":"2025-03-08T17:39:27.3022145+03:00","level":"INFO","msg":"handler: started","stream_id":"gcbdkml6"}
+{"time":"2025-03-08T17:39:27.6206734+03:00","level":"INFO","msg":"Starting system monitor"}

@@ -18,7 +18,7 @@ def plot_t2m(data, save_dir, captions, ep_curves=None):
     # print(ep_curves.shape)
     for i, (caption, joint_data) in enumerate(zip(captions, data)):
         joint = recover_from_ric(torch.from_numpy(joint_data).float(), opt.joints_num).numpy()        
-        plot_3d_motion_plotly(pjoin(save_dir, '%02d.html'%(i)), paramUtil.t2m_kinematic_chain, joint, title=caption, fps=20)
+        plot_3d_motion_plotly(pjoin(save_dir, '%02d.html'%(i)), paramUtil.kit_kinematic_chain, joint, title=caption, fps=20)
         # print(ep_curve.shape)
         if ep_curves is not None:
             ep_curve = ep_curves[i]

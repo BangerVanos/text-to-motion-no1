@@ -272,8 +272,8 @@ def animation_4_user_study(save_dir):
 if __name__ == '__main__':
     on_mac: bool = False
     # dataset_opt_path = './checkpoints/kit/Comp_v6_KLD005/opt.txt'
-    evaluation_target_checkpoint: str = 'Comp_v6_KLD005'
-    dataset_name: str = 'kit'
+    evaluation_target_checkpoint: str = 'Comp_v6_KLD01'
+    dataset_name: str = 't2m'
     dataset_opt_path = f'./checkpoints/{dataset_name}/{evaluation_target_checkpoint}/opt.txt'
     eval_motion_loaders = {
         ################
